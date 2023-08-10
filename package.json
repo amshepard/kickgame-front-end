@@ -1,0 +1,23 @@
+{
+  "name": "kickgame-front-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amshepard/kickgame-front-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amshepard/kickgame-front-end/issues"
+  },
+  "homepage": "https://github.com/amshepard/kickgame-front-end#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "cors": "^2.8.5"
+  }
+}

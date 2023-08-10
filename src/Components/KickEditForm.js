@@ -1,107 +1,107 @@
-// import axios from "axios";
-// import { useState, useEffect } from "react";
-// import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-// function SongEditForm() {
-//   let { id } = useParams();
-//   let navigate = useNavigate();
-//   const API = process.env.REACT_APP_API_URL;
+function KickEditForm() {
+  let { id } = useParams();
+  let navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL;
 
-//   const [song, setSong] = useState({
-//     name: "",
-//     artist: "",
-//     album: "",
-//     time: "",
-//     is_favorite: false,
-//   });
+  const [kick, setKick] = useState({
+    name: "",
+    brand: "",
+    price: "",
+    time: "",
+    is_favorite: false,
+  });
 
-//   const handleTextChange = (event) => {
-//     setSong({ ...song, [event.target.id]: event.target.value });
-//   };
+  const handleTextChange = (event) => {
+    setKick({ ...kick, [event.target.id]: event.target.value });
+  };
 
-//   const handleCheckboxChange = () => {
-//     setSong({ ...song, is_favorite: !song.is_favorite });
-//   };
+  const handleCheckboxChange = () => {
+    setKick({ ...kick, is_favorite: !kick.is_favorite });
+  };
 
-//   useEffect(() => {
-//     axios
-//       .get(`${API}/songs/${id}`)
-//       .then(
-//         (response) => {
-//           setSong(response.data);
-//         },
-//         (err) => {
-//           console.error(err);
-//           navigate(`/not-found`);
-//         }
-//       )
-//       .catch((c) => console.warn("catch", c));
-//   }, [id, API]);
+  useEffect(() => {
+    axios
+      .get(`${API}/kicks/${id}`)
+      .then(
+        (response) => {
+          setKick(response.data);
+        },
+        (err) => {
+          console.error(err);
+          navigate(`/not-found`);
+        }
+      )
+      .catch((c) => console.warn("catch", c));
+  }, [id, API]);
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     updateSong(song, id);
-//   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    updateKick(kick, id);
+  };
 
-//   const updateSong = (updatedSong) => {
-//     axios
-//       .put(`${API}/songs/${id}`, updatedSong)
-//       .then(
-//         () => {
-//           navigate(`/songs/${id}`);
-//         },
-//         (error) => console.error(error)
-//       )
-//       .catch((c) => console.warn("catch", c));
-//   };
+  const updateKick = (updatedKick) => {
+    axios
+      .put(`${API}/kicks/${id}`, updatedKick)
+      .then(
+        () => {
+          navigate(`/kicks/${id}`);
+        },
+        (error) => console.error(error)
+      )
+      .catch((c) => console.warn("catch", c));
+  };
 
-//   return (
-//     <div className="New">
-//       <form onSubmit={handleSubmit}>
-//         <label htmlFor="name">Song Name:</label>
-//         <input
-//           id="name"
-//           value={song.name}
-//           type="text"
-//           onChange={handleTextChange}
-//         />
-//         <label htmlFor="artist">Artist</label>
-//         <input
-//           id="artist"
-//           type="text"
-//           value={song.artist}
-//           onChange={handleTextChange}
-//         />
-//         <label htmlFor="album">Album</label>
-//         <input
-//           type="text"
-//           id="album"
-//           name="album"
-//           value={song.album}
-//           onChange={handleTextChange}
-//           placeholder=""
-//         />
-//         <label htmlFor="time">Favorite</label>
-//         <input
-//           id="time"
-//           type="text"
-//           name="time"
-//           value={song.time}
-//           onChange={handleTextChange}
-//         />
-//         <label htmlFor="is_favorite">Favorite</label>
-//         <input
-//           id="is_favorite"
-//           type="checkbox"
-//           onChange={handleCheckboxChange}
-//           checked={song.is_favorite}
-//         />
+  return (
+    <div className="New">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Kick Name:</label>
+        <input
+          id="name"
+          value={kick.name}
+          type="text"
+          onChange={handleTextChange}
+        />
+        <label htmlFor="brand">Brand</label>
+        <input
+          id="brand"
+          type="text"
+          value={kick.brand}
+          onChange={handleTextChange}
+        />
+        <label htmlFor="price">Price</label>
+        <input
+          type="text"
+          id="price"
+          name="price"
+          value={kick.price}
+          onChange={handleTextChange}
+          placeholder=""
+        />
+        {/* <label htmlFor="time">Favorite</label>
+        <input
+          id="time"
+          type="text"
+          name="time"
+          value={kick.time}
+          onChange={handleTextChange}
+        />
+        <label htmlFor="is_favorite">Favorite</label>
+        <input
+          id="is_favorite"
+          type="checkbox"
+          onChange={handleCheckboxChange}
+          checked={kick.is_favorite}
+        /> */}
 
-//         <br />
-//         <input type="submit" />
-//       </form>
-//     </div>
-//   );
-// }
+        <br />
+        <input type="submit" />
+      </form>
+    </div>
+  );
+}
 
-// export default SongEditForm;
+export default KickEditForm;
